@@ -45,6 +45,18 @@ CLONE_NEWTIME = 0x00000080 // New time namespace
 )
 ```
 
+### Docker使用的命名空间
+
+> unix.CLONE_NEWNS | unix.CLONE_NEWUTS | unix.CLONE_NEWIPC | unix.CLONE_NEWUSER | unix.CLONE_NEWPID | unix.CLONE_NEWNET | unix.CLONE_NEWCGROUP
+
+- mount：挂载命名空间，使进程有一个独立的挂载文件系统，始于Linux 2.4.19
+- ipc：ipc命名空间，使进程有一个独立的ipc，包括消息队列，共享内存和信号量，始于Linux 2.6.19
+- uts：uts命名空间，使进程有一个独立的hostname和domainname，始于Linux 2.6.19
+- net：network命令空间，使进程有一个独立的网络栈，始于Linux 2.6.24
+- pid：pid命名空间，使进程有一个独立的pid空间，始于Linux 2.6.24
+- user：user命名空间，是进程有一个独立的user空间，始于Linux 2.6.23，完成于Linux 3.8
+- cgroup：cgroup命名空间，使进程有一个独立的cgroup控制组，始于Linux 4.6
+
 ## rootfs（根文件系统）
 
 在Linux系统中，rootfs（根文件系统）是指一个进程可见的文件系统层次结构的根目录。它为进程提供了一个独立的文件系统视图，包括目录、设备文件、socket文件等。rootfs 可以是实际磁盘上的一个目录，也可以是通过各种机制（如aufs、overlayfs、union mounts等）联合挂载的多个目录的统一视图。
